@@ -99,14 +99,15 @@ public class GameManager : MonoBehaviour
 
     public void PowPelletEaten(Power_pellet pellet)
     {
-        //todo: changing ghost state
+        for (int k = 0; k < this.ghosts.Length; k++){
+            this.ghosts[k].frightened.Enable(pellet.duration);
+        }
+
         Invoke(nameof(RstGhostMult), pellet.duration);
-        CancelInvoke();
         PelletEaten(pellet);
-
-
+        CancelInvoke();
     }
-    private void PacmanEaten()
+    public void PacmanEaten()
     {
         this.pacman.gameObject.SetActive(false);
 
@@ -119,10 +120,9 @@ public class GameManager : MonoBehaviour
         else GameOver();
     }
 
-    private void GhostEaten(Ghost ghost)
+    public void GhostEaten(Ghost ghost)
     {
         SetScore(this.score + (ghost.points * this.ghostMult));
-
         this.ghostMult++;
     }
 

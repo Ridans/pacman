@@ -314,6 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880fa188001844a42b60148e679e6a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialBehavior: {fileID: 0}
+  target: {fileID: 0}
   points: 200
 --- !u!114 &2706795470150093576
 MonoBehaviour:
@@ -327,6 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac313b2246dcdbf43bb86c11c36c4f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
+  inside: {fileID: 0}
+  outside: {fileID: 0}
 --- !u!114 &3081760280426647549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db23e929e9aa5c438216926ca480ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
 --- !u!114 &6554962805502215506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d557189fd7cbeb42a49b16128c2b698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
 --- !u!114 &6363417356962633250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d9bb4da8fdd554bb9981e4521642a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
+  body: {fileID: 668479903676173305}
+  eyes: {fileID: 7273326645324306992}
+  blue: {fileID: 6983160067482852700}
+  white: {fileID: 6931206533886166359}
 --- !u!1 &7712275784070198527
 GameObject:
   m_ObjectHideFlags: 0
