@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public Ghost[] ghosts;
     public Pacman pacman;
     public Transform pellets;
+    public GameObject button;
 
     public int ghostMult { get; private set; } = 1;
 
@@ -14,12 +15,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         NewGame();
+        button.SetActive(false);
     }
 
     private void NewGame()
     {
         SetScore(0);
-        SetLives(3);
+        SetLives(1);
         NewRound();
     }
 
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         }
 
         this.pacman.gameObject.SetActive(false);
+        button.SetActive(true);
     }
 
     private void SetScore(int score)

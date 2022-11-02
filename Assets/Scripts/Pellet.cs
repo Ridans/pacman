@@ -13,6 +13,7 @@ public class Pellet : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pacman"))
         {
+            ScoreScript.Scorevalue +=10;
             Eat();
         }
     }
