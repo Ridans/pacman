@@ -1,2 +1,2 @@
 # pacman
-In the Packman root directory, launch the Packam.exe aplication
+In the Packman root directory, launch the Packam.exe executable file
