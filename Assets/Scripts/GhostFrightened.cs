@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostFrightened : GhostBehavior
 {
+
     public SpriteRenderer body;
+
     public SpriteRenderer eyes;
+
     public SpriteRenderer blue;
+
     public SpriteRenderer white;
 
-    public bool eaten { get; private set; }
 
-    public override void Enable()
-    {
+    public bool eaten{ get; private set; }
+
+    public override void Enable(float duration){
         base.Enable(duration);
 
         this.body.enabled = false;
@@ -23,8 +25,7 @@ public class GhostFrightened : GhostBehavior
         Invoke(nameof(Flash), duration / 2.0f);
     }
 
-    public override void Disable()
-    {
+    public override void Disable(){
         base.Disable();
 
         this.body.enabled = true;
@@ -33,60 +34,67 @@ public class GhostFrightened : GhostBehavior
         this.white.enabled = false;
     }
 
-    private void Eaten()
-    {
-        this.eaten = true;
+    private void Flash(){
+        if(!this.eaten){
 
-        Vector3 position = this.ghost.home.inside.position;
-        position.z = this.ghost.transform.position.z;
-        this.ghost.transform.position = position;
-        this.ghost.home.Enable(this.duration);
-
-        this.body.enabled = false;
-        this.eyes.enabled = true;
-        this.blue.enabled = false;
-        this.white.enabled = false;
-    }
-
-    private void Flash()
-    {
-        if (!this.eaten)
-        {
             this.blue.enabled = false;
             this.white.enabled = true;
             this.white.GetComponent<AnimatedSprite>().Restart();
         }
     }
 
-    private void OnEnable()
-    {
-        this.blue.GetComponent<AnimatedSprite>().Restart();
+    private void OnEnable(){
         this.ghost.movement.speedMult = 0.5f;
         this.eaten = false;
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable(){
         this.ghost.movement.speedMult = 1.0f;
-
         this.eaten = false;
+    }
+
+    private void Eaten(){
+        this.eaten = true;
+
+        Vector3 position = this.ghost.home.inside.position;
+        position.x = this.ghost.transform.position.z;
+        this.ghost.transform.position = position;
+
+        this.ghost.home.Enable(7.0f);
+
+        this.body.enabled = false;
+        this.eyes.enabled = true;
+        this.blue.enabled = false;
+        this.white.enabled = false; 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        {
+            if (this.enabled)
+            {
+                Eaten();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Node node = other.GetComponent<Node>();
 
-        if (node != null && this.enabled)
+        // Do nothing while the ghost is frightened
+        if (node != null && enabled)
         {
             Vector2 direction = Vector2.zero;
             float maxDistance = float.MinValue;
 
-            // Find the available direction that moves farthest from pacman
+            // Find the available direction that moves closet to pacman
             foreach (Vector2 availableDirection in node.availableDirections)
             {
-                // If the distance in this direction is greater than the current
-                // max distance then this direction becomes the new farthest
-                Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y);
+                // If the distance in this direction is less than the current
+                // min distance then this direction becomes the new closest
+                Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y, 0.0f);
                 float distance = (this.ghost.target.position - newPosition).sqrMagnitude;
 
                 if (distance > maxDistance)
@@ -100,13 +108,4 @@ public class GhostFrightened : GhostBehavior
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
-        {
-            if (this.enabled) {
-                Eaten();
-            }
-        }
-    }
 }

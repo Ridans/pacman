@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8130888163358128373}
   - component: {fileID: 6983160067482852700}
   - component: {fileID: 5050389305089024484}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1514382269384608647}
   - component: {fileID: 668479903676173305}
   - component: {fileID: 7288999209285505320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,8 +220,8 @@ GameObject:
   - component: {fileID: 2706795470150093576}
   - component: {fileID: 3081760280426647549}
   - component: {fileID: 6554962805502215506}
-  - component: {fileID: 6363417356962633250}
-  m_Layer: 0
+  - component: {fileID: 2620497534013995475}
+  m_Layer: 7
   m_Name: GhostBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
---- !u!114 &6363417356962633250
+--- !u!114 &2620497534013995475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,7 +385,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4393853765614973372}
   - component: {fileID: 7273326645324306992}
-  m_Layer: 0
+  - component: {fileID: 8670564139282453916}
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7712275784070198527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -459,6 +460,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8670564139282453916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712275784070198527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1793e838ea6904189b4f21b6d7769a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 21300000, guid: 7391304e6dcdc594484288107bfd217f, type: 3}
+  down: {fileID: 21300000, guid: b97167c35748db84fb4d32f4f242922a, type: 3}
+  left: {fileID: 21300000, guid: d65aa956b7569874fab274083826a77f, type: 3}
+  right: {fileID: 21300000, guid: 07ddb51374d9f19458dad756bbbcd880, type: 3}
 --- !u!1 &9039010379899471545
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +487,7 @@ GameObject:
   - component: {fileID: 1425846342953425807}
   - component: {fileID: 6931206533886166359}
   - component: {fileID: 8746438242262680972}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: White
   m_TagString: Untagged
   m_Icon: {fileID: 0}

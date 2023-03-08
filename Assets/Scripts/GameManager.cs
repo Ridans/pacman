@@ -100,15 +100,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PowPelletEaten(Power_pellet pellet)
+    public void PowerPellet(Power_pellet pellet)
     {
-        for (int k = 0; k < this.ghosts.Length; k++){
-            this.ghosts[k].frightened.Enable(pellet.duration);
+        for (int i = 0; i < this.ghosts.Length; i++){
+            this.ghosts[i].frightened.Enable(pellet.duration);
         }
 
-        Invoke(nameof(RstGhostMult), pellet.duration);
         PelletEaten(pellet);
         CancelInvoke();
+        Invoke(nameof(RstGhostMult), pellet.duration);
     }
     public void PacmanEaten()
     {

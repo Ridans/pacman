@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pellet : MonoBehaviour
 {
-    public int points = 10;
+    public int points;
 
     protected virtual void Eat()
     {
@@ -13,7 +13,7 @@ public class Pellet : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pacman"))
         {
-            ScoreScript.Scorevalue +=10;
+            ScoreScript.Scorevalue += points;
             Eat();
         }
     }
